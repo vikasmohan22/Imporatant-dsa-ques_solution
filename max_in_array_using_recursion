@@ -1,0 +1,11 @@
+def max(l,n,m):
+    if n==-1 :
+        print(m)
+        return
+    if(l[n]>m):
+        m=l[n]
+    max(l,n-1,m)
+l=[1,3,5,2,0,5,8,9,3,5,6]
+m=l[0] ;
+n=len(l)
+max(l,n-1,m)
