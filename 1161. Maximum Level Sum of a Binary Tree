@@ -1,0 +1,32 @@
+class Solution {
+    public int maxLevelSum(TreeNode root) {
+        if(root==null)
+        return 0 ;
+        Queue<TreeNode> queue= new LinkedList<TreeNode>() ;
+        queue.add(root) ;
+        int minlevel =1 ;
+        int maxsum=Integer.MIN_VALUE ;
+        int level=0;
+        while(!queue.isEmpty()){
+            int levelsize=queue.size() ;
+            int levelsum=0;
+            level++ ;
+            for(int i=0 ; i<levelsize; i++){
+                TreeNode firstnode =queue.poll();
+                levelsum+=firstnode.val ;
+                if(firstnode.left!=null){
+                    queue.add(firstnode.left) ;
+                }
+                if(firstnode.right!=null){
+                    queue.add(firstnode.right) ;
+                }
+
+            }
+            if(levelsum>maxsum){
+                maxsum=levelsum;
+                minlevel=level ;
+            }
+        }
+        return minlevel ;
+    }
+}
